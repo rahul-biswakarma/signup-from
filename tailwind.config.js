@@ -12,6 +12,7 @@ module.exports = {
 				input_bg: "#f1f1f1",
 			},
 			backgroundImage: {
+				loginHeroImage: "url('./assets/images/login.webp')",
 				signupHeroImage: "url('./assets/images/signup.webp')",
 			},
 		},

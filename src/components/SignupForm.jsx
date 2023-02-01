@@ -7,7 +7,7 @@ import IdCardIcon from "../assets/icons/id-card.svg";
 
 export default function SignupForm() {
 	return (
-		<form className="py-[3rem] flex flex-col gap-[2rem]">
+		<form className="py-[3rem] flex flex-col gap-[2rem] max-[600px]:gap-[1rem]">
 			<div>
 				<label
 					className=" text-black/60 text-sm"
