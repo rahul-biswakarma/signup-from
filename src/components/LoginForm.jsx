@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import LockIcon from "../assets/icons/lock.svg";
 import EmailIcon from "../assets/icons/email.svg";
 import ArrowIcon from "../assets/icons/arrow.svg";
-import IdCardIcon from "../assets/icons/id-card.svg";
 
 export default function SignupForm() {
+	const emailInputRef = useRef(null);
+	const emailLabelRef = useRef(null);
+	const passwordInputRef = useRef(null);
+
+	function handleLoginFormSubmit(e) {
+		e.preventDefault();
+		let emailInput = emailInputRef.current.value;
+		console.log(emailInput);
+		let passwordInput = passwordInputRef.current.value;
+
+		let emailPattern = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+
+		if (emailPattern.test(emailInput))
+			alert(`Hacking successfull: ${emailInput}, ${passwordInput}`);
+		else {
+			emailInputRef.current.style.borderColor = "red";
+			emailLabelRef.current.innerText = "Please enter valid email address";
+		}
+
+		emailInputRef.current.value = "";
+		passwordInputRef.current.value = "";
+	}
+
 	return (
 		<form className="py-[3rem] flex flex-col gap-[2rem]">
 			<div>
 				<label
+					ref={emailLabelRef}
 					className=" text-black/60 text-sm"
 					htmlFor="email"
 				>
@@ -24,9 +47,12 @@ export default function SignupForm() {
 						/>
 					</span>
 					<input
-						className="w-full h-[2.5rem] border border-input_bg rounded-r px-4 code-font"
+						data-testid="email-input"
+						ref={emailInputRef}
+						className="w-full h-[2.5rem] border border-input_bg rounded-r px-4 code-font focus:border-input_bg"
 						type="email"
 						placeholder="name@work.com"
+						required
 					/>
 				</div>
 			</div>
@@ -46,12 +72,18 @@ export default function SignupForm() {
 						/>
 					</span>
 					<input
+						data-testid="password-input"
+						ref={passwordInputRef}
 						className="w-full h-[2.5rem] border border-input_bg rounded-r px-4 code-font"
 						type="password"
+						required
 					/>
 				</div>
 			</div>
-			<button className="bg-blue_1 hover:bg-blue_2 p-[0rem_2rem] h-[2.5rem] rounded flex  items-center justify-center">
+			<button
+				onClick={(e) => handleLoginFormSubmit(e)}
+				className="bg-blue_1 hover:bg-blue_2 p-[0rem_2rem] h-[2.5rem] rounded flex  items-center justify-center"
+			>
 				<span className="code-font text-sm text-white">Login</span>
 				<img
 					className="w-5 h-auto ml-[1rem]"

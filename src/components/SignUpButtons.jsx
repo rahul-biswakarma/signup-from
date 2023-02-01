@@ -7,7 +7,10 @@ import GoogleIcon from "../assets/icons/google-icon.svg";
 export default function SignUpButtons() {
 	return (
 		<div className="flex flex-col gap-[1rem] w-full max-[400px]:mt-[2rem] mt-[4rem]">
-			<button className="relative w-full bg-blue_1 p-[0.5rem_1rem] rounded flex flex-wrap items-center">
+			<button
+				data-testid="continue-with-google-button"
+				className="relative w-full bg-blue_1 p-[0.5rem_1rem] rounded flex flex-wrap items-center"
+			>
 				<img
 					src={GoogleIcon}
 					alt="Google Icon"
@@ -18,7 +21,10 @@ export default function SignUpButtons() {
 				</span>
 			</button>
 			<a href="/signup">
-				<button className="relative w-full bg-dark_gray p-[0.5rem_1rem] rounded flex items-center flex-wrap">
+				<button
+					data-testid="continue-with-email-button"
+					className="relative w-full bg-dark_gray p-[0.5rem_1rem] rounded flex items-center flex-wrap"
+				>
 					<img
 						src={EmailIcon}
 						alt="Google Icon"
