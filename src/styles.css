@@ -5,3 +5,10 @@
 * {
 	font-family: "Inter", sans-serif;
 }
+*:focus {
+	outline: none;
+}
+
+.code-font {
+	font-family: "Fira Code", monospace;
+}

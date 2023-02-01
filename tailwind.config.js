@@ -11,6 +11,9 @@ module.exports = {
 				dark_gray: "#575757",
 				input_bg: "#f1f1f1",
 			},
+			backgroundImage: {
+				signupHeroImage: "url('./assets/images/signup.webp')",
+			},
 		},
 	},
 	plugins: [],

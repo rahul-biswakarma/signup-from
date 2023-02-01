@@ -6,7 +6,7 @@ import ProductImage from "../assets/images/product-image.png";
 export default function LandingPage() {
 	return (
 		<div className="w-full h-[100vh] overflow-hidden grid grid-cols-[700px_auto]">
-			<section className="flex flex-col items-center justify-center bg-bg_1 border-r-1 border-border_color w-full h-full p-24">
+			<section className="flex flex-col items-center justify-center bg-bg_1 border-r-[1px] border-border_color w-full h-full p-24">
 				<main className="max-w-[500px]">
 					<Header />
 					<SignUpButtons />
@@ -20,7 +20,7 @@ export default function LandingPage() {
 						<strong className="text-black font-semibold">Privacy Policy</strong>
 						.
 					</p>
-					<p className="text-sm text-black/40 mt-[2rem]">
+					<p className="text-sm text-black/40 mt-[3rem]">
 						Already have an account?{" "}
 						<span className="text-black font-semibold cursor-pointer">
 							<a href="/login">Login</a>
