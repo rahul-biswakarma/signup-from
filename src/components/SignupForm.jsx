@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import LockIcon from "../assets/icons/lock.svg";
 import EmailIcon from "../assets/icons/email.svg";
@@ -11,12 +11,14 @@ export default function SignupForm() {
 	const passwordRef = useRef(null);
 	const emailLabelRef = useRef(null);
 
+	const [formSubmit, setFormSubmit] = useState(false);
+
 	function handleSignupFormSubmit(e) {
 		e.preventDefault();
 		let emailInput = emailRef.current.value;
 
 		let publicDomains = [
-			"@google.com",
+			"@gmail.com",
 			"@yahoo.com",
 			"@outlook.com",
 			"@hotmail.com",
@@ -27,15 +29,15 @@ export default function SignupForm() {
 			if (emailInput.includes(publicDomain)) isWorkEmail = false;
 		});
 
-		if (isWorkEmail) alert(`Signup Successfull`);
-		else {
+		if (isWorkEmail) {
+			setFormSubmit(true);
+			nameRef.current.value = "";
+			emailRef.current.value = "";
+			passwordRef.current.value = "";
+		} else {
 			emailRef.current.style.borderColor = "red";
 			emailLabelRef.current.innerText = "Please enter your Work Email";
 		}
-
-		nameRef.current.value = "";
-		emailRef.current.value = "";
-		passwordRef.current.value = "";
 	}
 	return (
 		<form className="py-[3rem] flex flex-col gap-[2rem] max-[600px]:gap-[1rem]">
@@ -66,6 +68,7 @@ export default function SignupForm() {
 			</div>
 			<div>
 				<label
+					data-testid="email-label"
 					ref={emailLabelRef}
 					className=" text-black/60 text-sm"
 					htmlFor="email"
@@ -114,6 +117,14 @@ export default function SignupForm() {
 					/>
 				</div>
 			</div>
+
+			<p
+				data-testid="signup-success-message"
+				className="text-blue_1 my-[0.5rem] code-font"
+			>
+				{formSubmit && "Singup successfull"}
+			</p>
+
 			<button
 				data-testid="submit-button"
 				onClick={(e) => handleSignupFormSubmit(e)}

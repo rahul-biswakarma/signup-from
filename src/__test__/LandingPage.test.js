@@ -23,4 +23,4 @@ it("Continue of email buttons not disabled", () => {
 	expect(getByTestId("continue-with-email-button")).not.toHaveAttribute(
 		"disabled"
 	);
-})
+});

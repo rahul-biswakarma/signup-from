@@ -20,7 +20,10 @@ export default function SignUpButtons() {
 					Continue with Google
 				</span>
 			</button>
-			<a href="/signup">
+			<a
+				data-testid="continue-with-email-link"
+				href="/signup"
+			>
 				<button
 					data-testid="continue-with-email-button"
 					className="relative w-full bg-dark_gray p-[0.5rem_1rem] rounded flex items-center flex-wrap"

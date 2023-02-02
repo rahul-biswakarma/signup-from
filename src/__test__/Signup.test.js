@@ -4,6 +4,7 @@ import { Router, Route } from "react-router-dom";
 import "@testing-library/jest-dom";
 
 import SignUp from "../components/Signup";
+import Login from "../components/Login";
 import SignupForm from "../components/SignupForm";
 
 afterEach(cleanup);
@@ -60,16 +61,27 @@ it("login button has a correct path", () => {
 	expect(getByTestId("login-link")).toHaveAttribute("href", "/login");
 });
 
-// it("Sign up url is correct", () => {
-// 	const history = createMemoryHistory();
-// 	const { getByTestId } = render(
-// 		<Router
-// 			location={history.location}
-// 			navigator={history}
-// 		>
-// 			<SignUp />
-// 		</Router>
-// 	);
-// 	fireEvent.click(getByTestId("login-link"));
-// 	expect(history.location.pathname).toBe("/login");
-// });
+it("should render the form correctly", () => {
+	const { getByTestId } = render(<SignupForm />);
+	expect(getByTestId("name-input")).toBeInTheDocument();
+	expect(getByTestId("email-input")).toBeInTheDocument();
+	expect(getByTestId("password-input")).toBeInTheDocument();
+});
+
+it("should show an error message when a public email is entered", () => {
+	const { getByTestId } = render(<SignupForm />);
+	const emailInput = getByTestId("email-input");
+	const emailLabel = getByTestId("email-label");
+	fireEvent.change(emailInput, { target: { value: "test@gmail.com" } });
+	fireEvent.click(getByTestId("submit-button"));
+	expect(emailInput).toHaveStyle("border-color: red");
+	// expect(emailLabel).toHaveTextContent("Please enter your Work Email");
+});
+
+it("should show a success message when a work email is entered", () => {
+	const { getByTestId } = render(<SignupForm />);
+	const emailInput = getByTestId("email-input");
+	fireEvent.change(emailInput, { target: { value: "test@work.com" } });
+	fireEvent.submit(emailInput.form);
+	expect(getByTestId("signup-success-message")).toBeInTheDocument();
+});

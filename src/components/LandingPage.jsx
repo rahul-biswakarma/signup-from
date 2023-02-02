@@ -11,7 +11,10 @@ export default function LandingPage() {
 	}, []);
 
 	return (
-		<div className="w-full h-[100vh] overflow-hidden grid max-[1100px]:grid-cols-[100%] grid-cols-[700px_auto] ">
+		<div
+			data-testid="landing-component"
+			className="w-full h-[100vh] overflow-hidden grid max-[1100px]:grid-cols-[100%] grid-cols-[700px_auto] "
+		>
 			<section className="flex flex-col items-center justify-center bg-bg_1 border-r-[1px] border-border_color w-full h-full p-24 max-[600px]:p-12">
 				<main className="max-w-[500px]">
 					<Header />
