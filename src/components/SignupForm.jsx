@@ -115,6 +115,7 @@ export default function SignupForm() {
 				</div>
 			</div>
 			<button
+				data-testid="submit-button"
 				onClick={(e) => handleSignupFormSubmit(e)}
 				className="bg-blue_1 hover:bg-blue_2 p-[0rem_2rem] h-[2.5rem] rounded flex  items-center justify-center"
 			>

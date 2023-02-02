@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Header from "./Header";
 import SignupForm from "./SignupForm";
@@ -17,7 +18,12 @@ export default function LandingPage() {
 					<p className="text-sm text-black/40">
 						Already have an account?{" "}
 						<span className="text-black font-semibold cursor-pointer">
-							<a href="/login">Login</a>
+							<a
+								data-testid="login-link"
+								href="/login"
+							>
+								Login
+							</a>
 						</span>
 					</p>
 				</main>

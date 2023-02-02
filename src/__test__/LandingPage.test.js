@@ -11,12 +11,16 @@ it("Landing Page snapshot check", () => {
 	expect(asFragment(<LandingPage />)).toMatchSnapshot();
 });
 
-it("Continue of signup buttons not disabled", () => {
+it("Continue of google buttons not disabled", () => {
 	const { getByTestId } = render(<SignUpButtons />);
 	expect(getByTestId("continue-with-google-button")).not.toHaveAttribute(
 		"disabled"
 	);
+});
+
+it("Continue of email buttons not disabled", () => {
+	const { getByTestId } = render(<SignUpButtons />);
 	expect(getByTestId("continue-with-email-button")).not.toHaveAttribute(
 		"disabled"
 	);
-});
+})
